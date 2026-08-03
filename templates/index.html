@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 
-{% block content %}
-    <h1>안녕하세요, 제 김시은입니다.</h1>
-    <p>인공지능을 전공했고, AI 엔지니어 직무를 준비하고 있습니다.</p>
-{% endblock %}
+{% block title %}Home | 김시은 Portfolio{% endblock %}
 
-<p>방문 횟수: {{ visits }}</p>
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">AI Engineer Portfolio</p>
+    <h1>안녕하세요, AI 서비스를 구현하는 김시은입니다.</h1>
+    <p class="hero-copy">
+        인공지능전공 졸업예정자로서 Computer Vision, LLM/RAG, Flask 기반 웹 구현을 학습하며
+        실제 문제를 해결하는 프로젝트를 만들어 왔습니다.
+    </p>
+    <div class="hero-actions">
+        <a class="button primary" href="{{ url_for('project_list') }}">프로젝트 보기</a>
+        <a class="button ghost" href="{{ url_for('about') }}">이력 보기</a>
+    </div>
+    <p class="visit-count">방문 횟수 {{ visits }}</p>
+</section>
+{% endblock %}

@@ -1,9 +1,62 @@
 {% extends "base.html" %}
 
-{% block content %}
-    <h1>About Me</h1>
-    <p>학교: 경기대학교 인공지능전공</p>
-    <p>관심분야: NLP, Computer Vision, ML, AI</p>
-    <p>기술 스택: Python, Flask, PyTorch, scikit-learn</p>
+{% block title %}About | 김시은 Portfolio{% endblock %}
 
+{% block content %}
+<section class="page-heading">
+    <p class="eyebrow">About</p>
+    <h1>학습과 프로젝트 경험을 쌓아온 과정</h1>
+    <p>AI 모델을 서비스로 연결하는 경험을 중심으로 학력, 프로젝트, 수상 기록을 정리했습니다.</p>
+</section>
+
+<section class="timeline" aria-label="연도별 활동">
+    {% for year, items in career|dictsort(reverse=true) %}
+        <div class="timeline-year">
+            <div class="year-label">{{ year }}</div>
+            <div class="timeline-items">
+                {% for item in items %}
+                    <article class="timeline-card">
+                        {% if item.type %}
+                            <span class="type-label">{{ item.type }}</span>
+                        {% endif %}
+
+                        <h2>{{ item.title }}</h2>
+
+                        {% if item.award %}
+                            <p class="award-badge">{{ item.award }}</p>
+                        {% endif %}
+
+                        {% if item.venue %}
+                            <p class="meta-text">{{ item.venue }}</p>
+                        {% endif %}
+
+                        {% if item.summary %}
+                            <p>{{ item.summary }}</p>
+                        {% endif %}
+
+                        {% if item.tech %}
+                            <div class="tag-list">
+                                {% for tech in item.tech %}
+                                    <span class="tag">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</section>
+
+<section class="section-block">
+    <div class="section-title">
+        <p class="eyebrow">Certificates</p>
+        <h2>자격 및 준비 사항</h2>
+    </div>
+    <div class="card-grid small-grid">
+        {% for certificate in certificates %}
+            <div class="simple-card">{{ certificate }}</div>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}

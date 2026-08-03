@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} | 김시은 Portfolio{% endblock %}
+
+{% block content %}
+<article class="detail-page">
+    <a class="back-link" href="{{ url_for('project_list') }}">&lt; Projects</a>
+
+    <header class="detail-hero">
+        {% if project.award %}
+            <p class="award-badge">{{ project.award }}</p>
+        {% endif %}
+        <h1>{{ project.title }}</h1>
+        {% if project.subtitle %}
+            <p>{{ project.subtitle }}</p>
+        {% endif %}
+    </header>
+
+    <section class="detail-section">
+        <h2>Overview</h2>
+        <p>{{ project.overview }}</p>
+    </section>
+
+    <section class="detail-section">
+        <h2>Features</h2>
+        <ul class="feature-list">
+            {% for feature in project.features %}
+                <li>{{ feature }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="detail-section">
+        <h2>Role</h2>
+        <h3>{{ project.role_title }}</h3>
+        <p>{{ project.role_detail }}</p>
+    </section>
+
+    <section class="detail-section">
+        <h2>Tech Stack</h2>
+        <div class="tag-list">
+            {% for tech in project.tech %}
+                <span class="tag">{{ tech }}</span>
+            {% endfor %}
+        </div>
+    </section>
+</article>
+{% endblock %}
