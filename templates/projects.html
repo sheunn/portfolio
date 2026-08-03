@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Projects</h1>
+
+    {% for project in projects %}
+        <div>
+            <h2>{{ project.title }}</h2>
+
+            {% if project.award %}
+                <p><em>{{ project.award }}</em></p>
+            {% endif %}
+
+            <p>{{ project.description }}</p>
+            <p><strong>담당 역할:</strong> {{ project.role }}</p>
+            <p>
+                기술:
+                {% for tech in project.tech %}
+                    {{ tech }}
+                {% endfor %}
+            </p>
+        </div>
+    {% endfor %}
+{% endblock %}
