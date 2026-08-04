@@ -71,6 +71,80 @@ skills = {
     "Backend / Data": ["Flask", "Jinja2", "AWS RDS", "Gunicorn", "Nginx", "systemd"],
 }
 
+# experiences는 projects처럼 slug를 key로 쓰는 상세 페이지용 데이터입니다.
+# career는 기존 연도별 요약 타임라인으로 남겨두고, 실제 활동 상세는 이 딕셔너리에서 관리합니다.
+experiences = {
+    "swat": {
+        "title": "SWAT 봉사단",
+        "period": "2023",
+        "category": "봉사활동",
+        "summary": "보육원, 초중고등학교 대상 AI-SW(IT-kit) 실습 교육을 진행하며 청소년 대상 AI 교육 콘텐츠 기획 및 전달 경험을 쌓았습니다.",
+        "highlights": [
+            "보육원·초중고 학생 대상 AI-SW 실습 키트 운영",
+            "눈높이에 맞춘 AI 개념 설명 및 실습 진행",
+        ],
+    },
+    "digital-saessak": {
+        "title": "디지털 새싹 강사활동",
+        "period": "2024",
+        "category": "교육/강사",
+        "summary": "수원 내 고등학교를 대상으로 IoT 관련 교육을 직접 기획하고 진행했습니다.",
+        "highlights": [
+            "고등학생 대상 IoT 개념 및 실습 커리큘럼 구성",
+            "현장 강의 진행 및 실습 지도",
+        ],
+    },
+    "singapore-secure-coding": {
+        "title": "싱가포르 시큐어코딩 연수",
+        "period": "2025.08.12 ~ 08.22",
+        "category": "해외연수",
+        "summary": "경기대학교 SW중심대학사업단 주관 싱가포르 시큐어코딩 개발 프로젝트에 선발되어 참가했습니다. 글로벌 사이버보안 선진국인 싱가포르에서 보안 취약점 분석·방어 코딩 실습을 진행하고, 현지 사이버보안 기관을 방문해 AI 기반 보안 실무 역량을 강화했습니다.",
+        "highlights": [
+            "보안 취약점 분석 및 방어 코딩 실습",
+            "AWS, Google 오피스 방문",
+            "웁살라 보안회사 방문 — 블록체인/보안 실무 학습",
+        ],
+    },
+    "vice-president": {
+        "title": "AI컴퓨터공학부 부학생회장",
+        "period": "2025",
+        "category": "학생 활동",
+        "summary": "AI컴퓨터공학부 부학생회장을 역임하며 학과 내 행사를 기획·진행하고, 교수진과 학우 간 소통을 촉진하는 역할을 맡았습니다.",
+        "highlights": [
+            "학과 행사 기획 및 운영",
+            "교수-학생 간 소통 채널 활성화",
+        ],
+    },
+    "k-primus": {
+        "title": "K-PRIMUS 서포터즈 활동",
+        "period": "2025",
+        "category": "학생 활동",
+        "summary": "자유전공학부 신입생의 대학생활 적응을 지원하는 재학생 서포터즈로 활동했습니다. 다양한 전공의 선배들과의 만남을 기획하고, 신입생 대학생활 적응에 필요한 정보를 정리해 발표했습니다.",
+        "highlights": [
+            "전공별 선배 매칭 프로그램 기획",
+            "신입생 대상 대학생활 정보 정리 및 발표",
+        ],
+    },
+    "ceo-forum": {
+        "title": "CEO 포럼 장학생 선발",
+        "period": "2025",
+        "category": "장학/선발",
+        "summary": "경기대학교 CEO 포럼 장학생으로 선정되었습니다.",
+        "highlights": [],
+    },
+    "ces-2026": {
+        "title": "미국 실리콘밸리 CES 연수",
+        "period": "2026.01.04 ~ 01.13",
+        "category": "해외연수",
+        "summary": "경기대학교 SW중심대학사업단 주관 SW상상기업 프로그램의 우수 참여자로 선발되어 미국 실리콘밸리 연수에 참가했습니다. CES 2026을 참관하며 글로벌 AI·SW 기술 트렌드를 직접 탐색하고, Google·NVIDIA·Tesla 등 빅테크 기업을 탐방했습니다.",
+        "highlights": [
+            "CES 2026 참관 — 글로벌 AI·SW 트렌드 탐색",
+            "Google, NVIDIA, Tesla 등 빅테크 기업 탐방",
+            "UC 버클리·스탠퍼드 특강 참여",
+        ],
+    },
+}
+
 projects = {
     "ddak-teo": {
         "title": "딱!터",

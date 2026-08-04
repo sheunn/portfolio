@@ -3,45 +3,28 @@
 {% block title %}Experience | 김시은 Portfolio{% endblock %}
 
 {% block content %}
-{# career 딕셔너리는 연도별 spec sheet로 렌더링해 홈과 같은 격자형 디자인 언어를 유지합니다. #}
 <section class="sub-hero">
     <div class="eyebrow">// EXPERIENCE LOG</div>
     <h1>Experience</h1>
-    <p>프로젝트, 수상, 학습 경험을 최신 연도부터 정리했습니다.</p>
+    <p>교육, 연수, 학생 활동, 장학 선발 경험을 최신 연도부터 정리했습니다.</p>
 </section>
 
-<section class="experience-sheet" aria-label="연도별 활동">
-    {% for year, items in career|dictsort(reverse=true) %}
-        <section class="year-block">
-            <div class="year-title mono">{{ year }}</div>
-            <div class="year-items">
-                {% for item in items %}
-                    <article class="exp-row">
-                        <div class="exp-meta">
-                            {% if item.type %}
-                                <span>{{ item.type }}</span>
+<section class="experience-timeline" aria-label="연도별 활동">
+    {% for year, experiences in grouped_experiences %}
+        <section class="experience-year">
+            <div class="label year-label">{{ year }}</div>
+            <div class="experience-list">
+                {% for slug, experience in experiences %}
+                    <a class="experience-link-row" href="{{ url_for('experience_detail', slug=slug) }}">
+                        <span class="tag">{{ experience.category }}</span>
+                        <div class="experience-row-main">
+                            <h2>{{ experience.title }}</h2>
+                            {% if experience.period != year %}
+                                <p>{{ experience.period }}</p>
                             {% endif %}
                         </div>
-                        <div class="exp-main">
-                            <h2>{{ item.title }}</h2>
-                            {% if item.award %}
-                                <p class="award-mark">{{ item.award }}</p>
-                            {% endif %}
-                            {% if item.venue %}
-                                <p class="paper-dim">{{ item.venue }}</p>
-                            {% endif %}
-                            {% if item.summary %}
-                                <p>{{ item.summary }}</p>
-                            {% endif %}
-                            {% if item.tech %}
-                                <div class="tags">
-                                    {% for tech in item.tech %}
-                                        <span class="tag {% if loop.index <= 2 %}hi{% endif %}">{{ tech }}</span>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </div>
-                    </article>
+                        <span class="list-link mono">→</span>
+                    </a>
                 {% endfor %}
             </div>
         </section>
