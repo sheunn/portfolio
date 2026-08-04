@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ experience.title }} | 김시은 Portfolio{% endblock %}
+
+{% block content %}
+<article class="detail-page">
+    <a class="back-link" href="{{ url_for('experience_list') }}">← Experience로</a>
+
+    <header class="detail-hero">
+        <p class="detail-meta mono">{{ experience.category }} · {{ experience.period }}</p>
+        <h1>{{ experience.title }}</h1>
+        <p>{{ experience.summary }}</p>
+    </header>
+
+    {% if experience.highlights %}
+        <section class="detail-section">
+            <h2>주요 활동</h2>
+            <ul class="feature-list">
+                {% for highlight in experience.highlights %}
+                    <li>{{ highlight }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+
+    {% if image_urls %}
+        <section class="detail-section">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                {% for image_url in image_urls %}
+                    <a href="{{ image_url }}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{ image_url }}" alt="{{ experience.title }} 사진">
+                    </a>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+</article>
+{% endblock %}

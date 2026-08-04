@@ -1,4 +1,6 @@
-from flask import Flask, abort, render_template
+import os
+
+from flask import Flask, abort, render_template, url_for
 
 import data
 
@@ -45,10 +47,50 @@ def skills():
 
 
 @app.route("/experience")
-def experience():
-    # career 타임라인은 About에서 분리해 별도 Experience 페이지로 전달합니다.
-    # 소개 페이지는 짧게 유지하고, 활동/수상/프로젝트 이력은 한 페이지에서 깊게 보여주기 위한 구조입니다.
-    return render_template("experience.html", career=data.career)
+def experience_list():
+    # period의 앞 4자리를 연도로 보고 그룹핑합니다.
+    # 템플릿은 화면 표현만 담당하고, 정렬/그룹핑 같은 데이터 준비는 라우트에서 처리합니다.
+    grouped_experiences = {}
+    for slug, experience in data.experiences.items():
+        year = experience["period"][:4]
+        grouped_experiences.setdefault(year, []).append((slug, experience))
+
+    sorted_experiences = sorted(
+        grouped_experiences.items(),
+        key=lambda item: item[0],
+        reverse=True,
+    )
+
+    return render_template("experience.html", grouped_experiences=sorted_experiences)
+
+
+@app.route("/experience/<slug>")
+def experience_detail(slug):
+    experience = data.experiences.get(slug)
+
+    if experience is None:
+        abort(404)
+
+    image_dir = os.path.join(app.static_folder, "images", "experience", slug)
+    image_urls = []
+
+    if os.path.isdir(image_dir):
+        allowed_extensions = {".jpg", ".jpeg", ".png"}
+        image_files = [
+            filename
+            for filename in os.listdir(image_dir)
+            if os.path.splitext(filename.lower())[1] in allowed_extensions
+        ]
+        image_urls = [
+            url_for("static", filename=f"images/experience/{slug}/{filename}")
+            for filename in sorted(image_files)
+        ]
+
+    return render_template(
+        "experience_detail.html",
+        experience=experience,
+        image_urls=image_urls,
+    )
 
 
 @app.route("/projects")
