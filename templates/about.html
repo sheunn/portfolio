@@ -3,60 +3,35 @@
 {% block title %}About | 김시은 Portfolio{% endblock %}
 
 {% block content %}
+{# About은 빠른 자기소개용 페이지로 유지하고, 긴 연도별 이력은 experience.html로 분리했습니다. #}
 <section class="page-heading">
     <p class="eyebrow">About</p>
-    <h1>학습과 프로젝트 경험을 쌓아온 과정</h1>
-    <p>AI 모델을 서비스로 연결하는 경험을 중심으로 학력, 프로젝트, 수상 기록을 정리했습니다.</p>
+    <h1>AI 서비스를 직접 구현하며 성장하고 있습니다.</h1>
+    <p>
+        모델을 학습시키는 데서 끝나지 않고, 사용자가 실제로 접근할 수 있는 웹 서비스 형태로
+        연결하는 과정에 관심이 많습니다.
+    </p>
 </section>
 
-<section class="timeline" aria-label="연도별 활동">
-    {% for year, items in career|dictsort(reverse=true) %}
-        <div class="timeline-year">
-            <div class="year-label">{{ year }}</div>
-            <div class="timeline-items">
-                {% for item in items %}
-                    <article class="timeline-card">
-                        {% if item.type %}
-                            <span class="type-label">{{ item.type }}</span>
-                        {% endif %}
+<section class="about-grid">
+    <article class="profile-card about-intro-card">
+        <h2>{{ profile.name }}</h2>
+        <p class="subtitle">{{ profile.tagline }}</p>
+        <p>{{ profile.about_short }}</p>
+    </article>
 
-                        <h2>{{ item.title }}</h2>
+    <article class="profile-card">
+        <h2>Education</h2>
+        <p>{{ profile.education }}</p>
+    </article>
 
-                        {% if item.award %}
-                            <p class="award-badge">{{ item.award }}</p>
-                        {% endif %}
-
-                        {% if item.venue %}
-                            <p class="meta-text">{{ item.venue }}</p>
-                        {% endif %}
-
-                        {% if item.summary %}
-                            <p>{{ item.summary }}</p>
-                        {% endif %}
-
-                        {% if item.tech %}
-                            <div class="tag-list">
-                                {% for tech in item.tech %}
-                                    <span class="tag">{{ tech }}</span>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </article>
-                {% endfor %}
-            </div>
-        </div>
-    {% endfor %}
-</section>
-
-<section class="section-block">
-    <div class="section-title">
-        <p class="eyebrow">Certificates</p>
-        <h2>자격 및 준비 사항</h2>
-    </div>
-    <div class="card-grid small-grid">
-        {% for certificate in certificates %}
-            <div class="simple-card">{{ certificate }}</div>
-        {% endfor %}
-    </div>
+    <article class="profile-card">
+        <h2>Certificates</h2>
+        <ul class="compact-list">
+            {% for certificate in certificates %}
+                <li>{{ certificate }}</li>
+            {% endfor %}
+        </ul>
+    </article>
 </section>
 {% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Experience | 김시은 Portfolio{% endblock %}
+
+{% block content %}
+{# career 딕셔너리 렌더링은 상세 이력 전용 페이지에 두어 About 페이지가 너무 길어지지 않게 했습니다. #}
+<section class="page-heading">
+    <p class="eyebrow">Experience</p>
+    <h1>연도별 활동과 프로젝트 경험</h1>
+    <p>
+        프로젝트, 수상, 학습 경험을 시간 순서로 정리했습니다.
+        최신 활동부터 확인할 수 있습니다.
+    </p>
+</section>
+
+<section class="timeline" aria-label="연도별 활동">
+    {% for year, items in career|dictsort(reverse=true) %}
+        <div class="timeline-year">
+            <div class="year-label">{{ year }}</div>
+            <div class="timeline-items">
+                {% for item in items %}
+                    <article class="timeline-card">
+                        {% if item.type %}
+                            <span class="type-label">{{ item.type }}</span>
+                        {% endif %}
+
+                        <h2>{{ item.title }}</h2>
+
+                        {% if item.award %}
+                            <p class="award-badge">{{ item.award }}</p>
+                        {% endif %}
+
+                        {% if item.venue %}
+                            <p class="meta-text">{{ item.venue }}</p>
+                        {% endif %}
+
+                        {% if item.summary %}
+                            <p>{{ item.summary }}</p>
+                        {% endif %}
+
+                        {% if item.tech %}
+                            <div class="tag-list">
+                                {% for tech in item.tech %}
+                                    <span class="tag">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}

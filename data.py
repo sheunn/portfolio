@@ -2,6 +2,18 @@
 # Flask 라우트(app.py)는 이 데이터를 import해서 템플릿으로 전달하고,
 # 템플릿은 전달받은 데이터를 Jinja2 문법으로 반복/조건 렌더링합니다.
 
+# profile은 홈/About처럼 여러 페이지에서 반복해서 쓰는 기본 소개 정보입니다.
+# 이름, 연락처, 학력 같은 내용을 data.py에 두면 템플릿 문구를 직접 찾아 고치지 않아도 됩니다.
+profile = {
+    "name": "김시은",
+    "tagline": "AI Engineer",
+    "about_short": "인공지능전공 졸업예정자로서 Computer Vision, LLM/RAG, Flask 기반 웹 구현을 학습하며 실제 문제를 해결하는 프로젝트를 만들어 왔습니다.",
+    "education": "경기대학교 인공지능전공",
+    "email": "여기에 이메일을 입력하세요",
+    "github": "여기에 GitHub URL을 입력하세요",
+    "linkedin": "여기에 LinkedIn URL을 입력하세요",
+}
+
 career = {
     "2025": [
         {

@@ -11,16 +11,30 @@ visit_count = 0
 def home():
     global visit_count
     visit_count += 1
-    return render_template("index.html", visits=visit_count)
+    featured_skills = [
+        "Python",
+        "Flask",
+        "RAG",
+        "LangChain",
+        "YOLO",
+        "OpenCV",
+    ]
+    return render_template(
+        "index.html",
+        visits=visit_count,
+        profile=data.profile,
+        certificates=data.certificates,
+        featured_skills=featured_skills,
+    )
 
 
 @app.route("/about")
 def about():
-    # 화면에 필요한 이력/자격증 데이터를 data.py에서 가져와 템플릿에 전달합니다.
+    # 화면에 필요한 기본 소개/자격증 데이터를 data.py에서 가져와 템플릿에 전달합니다.
     # app.py에 내용을 직접 적지 않으면, 라우팅 코드와 포트폴리오 데이터가 분리되어 유지보수가 쉬워집니다.
     return render_template(
         "about.html",
-        career=data.career,
+        profile=data.profile,
         certificates=data.certificates,
     )
 
@@ -28,6 +42,13 @@ def about():
 @app.route("/skills")
 def skills():
     return render_template("skills.html", skills=data.skills)
+
+
+@app.route("/experience")
+def experience():
+    # career 타임라인은 About에서 분리해 별도 Experience 페이지로 전달합니다.
+    # 소개 페이지는 짧게 유지하고, 활동/수상/프로젝트 이력은 한 페이지에서 깊게 보여주기 위한 구조입니다.
+    return render_template("experience.html", career=data.career)
 
 
 @app.route("/projects")

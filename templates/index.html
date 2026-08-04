@@ -3,17 +3,86 @@
 {% block title %}Home | 김시은 Portfolio{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <p class="eyebrow">AI Engineer Portfolio</p>
-    <h1>안녕하세요, AI 서비스를 구현하는 김시은입니다.</h1>
-    <p class="hero-copy">
-        인공지능전공 졸업예정자로서 Computer Vision, LLM/RAG, Flask 기반 웹 구현을 학습하며
-        실제 문제를 해결하는 프로젝트를 만들어 왔습니다.
-    </p>
-    <div class="hero-actions">
-        <a class="button primary" href="{{ url_for('project_list') }}">프로젝트 보기</a>
-        <a class="button ghost" href="{{ url_for('about') }}">이력 보기</a>
+<section class="profile-layout" aria-label="프로필 요약">
+    <aside class="profile-sidebar">
+        <div class="avatar-placeholder" aria-label="프로필 사진 자리">
+            <span>KS</span>
+        </div>
+
+        <div class="profile-name-block">
+            <p class="eyebrow">Portfolio</p>
+            <h1>{{ profile.name }}</h1>
+            <p>{{ profile.tagline }}</p>
+        </div>
+
+        <section class="profile-card">
+            <h2>Contact</h2>
+            <ul class="contact-list">
+                <li>
+                    <span class="contact-icon">Email</span>
+                    <span>{{ profile.email }}</span>
+                </li>
+                <li>
+                    <span class="contact-icon">GitHub</span>
+                    <span>{{ profile.github }}</span>
+                </li>
+                <li>
+                    <span class="contact-icon">LinkedIn</span>
+                    <span>{{ profile.linkedin }}</span>
+                </li>
+            </ul>
+        </section>
+
+        <p class="visit-count">방문 횟수 {{ visits }}</p>
+    </aside>
+
+    <div class="profile-main">
+        <section class="profile-card profile-summary">
+            <p class="eyebrow">About</p>
+            <h2>AI 기능을 서비스로 연결하는 개발자</h2>
+            <p>{{ profile.about_short }}</p>
+        </section>
+
+        <div class="profile-info-grid">
+            <section class="profile-card">
+                <h2>Education</h2>
+                <p>{{ profile.education }}</p>
+            </section>
+
+            <section class="profile-card">
+                <h2>Certificates</h2>
+                <ul class="compact-list">
+                    {% for certificate in certificates %}
+                        <li>{{ certificate }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+
+        <section class="profile-card">
+            <div class="card-heading-row">
+                <h2>Skills Preview</h2>
+                <a class="text-link" href="{{ url_for('skills') }}">더보기</a>
+            </div>
+            <div class="tag-list">
+                {% for skill in featured_skills %}
+                    <span class="tag">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </section>
+
+        <div class="quick-link-grid">
+            <a class="quick-link-card" href="{{ url_for('experience') }}">
+                <span class="eyebrow">Experience</span>
+                <strong>연도별 활동 보기</strong>
+                <span>프로젝트, 수상, 학습 이력을 타임라인으로 정리했습니다.</span>
+            </a>
+            <a class="quick-link-card" href="{{ url_for('project_list') }}">
+                <span class="eyebrow">Projects</span>
+                <strong>프로젝트 상세 보기</strong>
+                <span>AI 기능 구현 과정과 맡은 역할을 프로젝트별로 확인할 수 있습니다.</span>
+            </a>
+        </div>
     </div>
-    <p class="visit-count">방문 횟수 {{ visits }}</p>
 </section>
 {% endblock %}
