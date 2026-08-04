@@ -11,10 +11,25 @@ visit_count = 0
 # 일부 Experience 이미지 폴더명은 URL slug와 철자가 다릅니다.
 # 상세 페이지는 URL 안정성을 위해 slug를 유지하고, 실제 파일 탐색만 이 매핑을 거칩니다.
 EXPERIENCE_IMAGE_FOLDERS = {
-    "digital-saessak": "digital-seasak",
-    "vice-president": "presidnet",
-    "ces-2026": "ces",
+    "digital-saessak": ["digital-seasak"],
+    # 기존 배포 폴더명(presidnet)과 정정된 폴더명(president)을 둘 다 허용합니다.
+    # 이미지 파일만 바꿔도 URL slug(/experience/vice-president)는 안정적으로 유지됩니다.
+    "vice-president": ["president", "presidnet"],
+    "ces-2026": ["ces"],
 }
+
+
+def find_experience_image_folder(slug):
+    """Experience slug와 실제 이미지 폴더명이 다를 수 있어 후보 폴더를 순서대로 찾습니다."""
+    folder_candidates = EXPERIENCE_IMAGE_FOLDERS.get(slug, [slug])
+    folder_candidates = [*folder_candidates, slug]
+
+    for folder in dict.fromkeys(folder_candidates):
+        image_dir = os.path.join(app.static_folder, "images", "experience", folder)
+        if os.path.isdir(image_dir):
+            return folder, image_dir
+
+    return slug, None
 
 
 @app.route("/")
@@ -79,11 +94,10 @@ def experience_detail(slug):
     if experience is None:
         abort(404)
 
-    image_folder = EXPERIENCE_IMAGE_FOLDERS.get(slug, slug)
-    image_dir = os.path.join(app.static_folder, "images", "experience", image_folder)
+    image_folder, image_dir = find_experience_image_folder(slug)
     image_urls = []
 
-    if os.path.isdir(image_dir):
+    if image_dir is not None:
         allowed_extensions = {".jpg", ".jpeg", ".png"}
         image_files = [
             filename
