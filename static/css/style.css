@@ -299,18 +299,26 @@ h3 {
     place-items: center;
     overflow: hidden;
     margin-bottom: 8px;
-    border: 1px solid rgba(99, 230, 190, 0.28);
     border-radius: 50%;
-    background:
-        radial-gradient(circle at 35% 25%, rgba(99, 230, 190, 0.24), transparent 42%),
-        linear-gradient(145deg, rgba(23, 32, 51, 0.95), rgba(9, 13, 20, 0.95));
+    background: var(--surface);
     box-shadow: var(--shadow);
 }
 
+.profile-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(99, 230, 190, 0.42);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
 .profile-photo img {
+    display: block;
     width: 100%;
     height: 100%;
     border-radius: inherit;
+    clip-path: ellipse(50% 50% at 50% 50%);
     object-fit: cover;
     object-position: center center;
 }
