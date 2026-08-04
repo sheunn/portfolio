@@ -8,6 +8,14 @@ app = Flask(__name__)
 
 visit_count = 0
 
+# 일부 Experience 이미지 폴더명은 URL slug와 철자가 다릅니다.
+# 상세 페이지는 URL 안정성을 위해 slug를 유지하고, 실제 파일 탐색만 이 매핑을 거칩니다.
+EXPERIENCE_IMAGE_FOLDERS = {
+    "digital-saessak": "digital-seasak",
+    "vice-president": "presidnet",
+    "ces-2026": "ces",
+}
+
 
 @app.route("/")
 def home():
@@ -71,7 +79,8 @@ def experience_detail(slug):
     if experience is None:
         abort(404)
 
-    image_dir = os.path.join(app.static_folder, "images", "experience", slug)
+    image_folder = EXPERIENCE_IMAGE_FOLDERS.get(slug, slug)
+    image_dir = os.path.join(app.static_folder, "images", "experience", image_folder)
     image_urls = []
 
     if os.path.isdir(image_dir):
@@ -82,7 +91,7 @@ def experience_detail(slug):
             if os.path.splitext(filename.lower())[1] in allowed_extensions
         ]
         image_urls = [
-            url_for("static", filename=f"images/experience/{slug}/{filename}")
+            url_for("static", filename=f"images/experience/{image_folder}/{filename}")
             for filename in sorted(image_files)
         ]
 
