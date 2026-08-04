@@ -3,38 +3,36 @@
 {% block title %}Projects | 김시은 Portfolio{% endblock %}
 
 {% block content %}
-<section class="page-heading">
-    <p class="eyebrow">Projects</p>
-    <h1>문제를 정의하고 AI 기능으로 연결한 프로젝트</h1>
-    <p>각 카드는 slug 기반 상세 페이지로 이어집니다. 프로젝트 데이터는 data.py의 projects 딕셔너리에서 불러옵니다.</p>
+<section class="sub-hero">
+    <div class="eyebrow">// PROJECT ARCHIVE</div>
+    <h1>Projects</h1>
+    <p>AI 기능을 실제 서비스로 구현하며 맡은 역할과 기술적 의사결정을 정리했습니다.</p>
 </section>
 
-<section class="project-grid">
+<section class="list-sheet" aria-label="프로젝트 목록">
     {% for slug, project in projects.items() %}
-        <article class="project-card">
-            <div>
-                {% if project.award %}
-                    <p class="award-badge">{{ project.award }}</p>
-                {% endif %}
-
+        <a class="list-row project-row" href="{{ url_for('project_detail', slug=slug) }}">
+            <div class="list-index mono">{{ "%02d"|format(loop.index) }}</div>
+            <div class="list-main">
+                <div class="list-kicker">
+                    {% if project.award %}
+                        <span class="award-mark">{{ project.award }}</span>
+                    {% else %}
+                        <span>PROJECT</span>
+                    {% endif %}
+                </div>
                 <h2>{{ project.title }}</h2>
-
                 {% if project.subtitle %}
-                    <p class="subtitle">{{ project.subtitle }}</p>
+                    <p>{{ project.subtitle }}</p>
                 {% endif %}
-
-                <p>{{ project.overview }}</p>
-            </div>
-
-            <div class="project-card-footer">
-                <div class="tag-list">
-                    {% for tech in project.tech %}
-                        <span class="tag">{{ tech }}</span>
+                <div class="tags">
+                    {% for tech in project.tech[:6] %}
+                        <span class="tag {% if loop.index <= 2 %}hi{% endif %}">{{ tech }}</span>
                     {% endfor %}
                 </div>
-                <a class="text-link" href="{{ url_for('project_detail', slug=slug) }}">자세히 보기</a>
             </div>
-        </article>
+            <span class="list-link mono">DETAIL →</span>
+        </a>
     {% endfor %}
 </section>
 {% endblock %}

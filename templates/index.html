@@ -23,13 +23,12 @@
 
     <div class="hero-copy">
         <div class="eyebrow">// {{ profile.tagline|upper }} PORTFOLIO</div>
-        <h1>AI 기능을 실제 서비스로<br>연결하는 {{ profile.name }}입니다.</h1>
-        <p class="lead">{{ profile.about_short }}</p>
+        <h1>{{ profile.name }}</h1>
+        <p class="lead">AI와 데이터를 활용해 현실의 문제를 해결하는 서비스를 개발합니다.</p>
         <div class="hero-actions">
             <a class="btn primary" href="{{ url_for('project_list') }}">Projects 보기 →</a>
             <a class="btn ghost" href="{{ url_for('experience') }}">Experience 보기</a>
         </div>
-        <div class="visits">visits: <span>{{ "%04d"|format(visits) }}</span></div>
     </div>
 </section>
 
@@ -38,7 +37,7 @@
         <div class="label">EDUCATION</div>
         <div class="row">
             <div class="k">2022 — 2026</div>
-            <div class="v">{{ profile.education }}<small>AI 포트폴리오 · Flask/Jinja2</small></div>
+            <div class="v">{{ profile.education }}<small>GPA 4.2/4.5</small></div>
         </div>
     </div>
 

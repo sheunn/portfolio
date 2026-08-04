@@ -98,7 +98,7 @@ nav .brand span,
     margin: 0 auto;
     padding: 88px 56px 64px;
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 260px 1fr;
     gap: 64px;
     align-items: start;
 }
@@ -106,8 +106,8 @@ nav .brand span,
 /* viewfinder / bounding-box photo frame — signature element */
 .viewfinder {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    aspect-ratio: 413 / 531;
 }
 
 .viewfinder img,
@@ -218,7 +218,7 @@ nav .brand span,
 }
 
 .hero-copy h1 {
-    font-size: 40px;
+    font-size: 56px;
     font-weight: 700;
     line-height: 1.28;
     margin: 0 0 20px;
@@ -276,6 +276,35 @@ nav .brand span,
 
 .visits span {
     color: var(--signal);
+}
+
+/* ---------- SUB PAGES ---------- */
+.sub-hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 72px 56px 28px;
+}
+
+.sub-hero .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--signal);
+    margin-bottom: 14px;
+}
+
+.sub-hero h1 {
+    margin: 0 0 14px;
+    color: var(--paper);
+    font-size: 48px;
+    line-height: 1.2;
+}
+
+.sub-hero p {
+    max-width: 620px;
+    margin: 0;
+    color: var(--paper-dim);
+    font-size: 15px;
 }
 
 /* ---------- SPEC SHEET SECTIONS ---------- */
@@ -477,6 +506,140 @@ nav .brand span,
     gap: 6px;
 }
 
+/* ---------- PROJECTS ---------- */
+.list-sheet {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 56px 96px;
+}
+
+.list-row {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 28px;
+    align-items: start;
+    padding: 28px 0;
+    border-top: 1px solid var(--grid-line);
+    transition: background 0.15s ease;
+}
+
+.list-row:last-child {
+    border-bottom: 1px solid var(--grid-line);
+}
+
+.list-row:hover {
+    background: rgba(201, 240, 77, 0.03);
+}
+
+.list-index {
+    color: var(--signal-dim);
+    font-size: 13px;
+}
+
+.list-kicker {
+    margin-bottom: 8px;
+    color: var(--paper-dim);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.list-main h2 {
+    margin: 0 0 8px;
+    color: var(--paper);
+    font-size: 24px;
+    line-height: 1.35;
+}
+
+.list-main p {
+    max-width: 720px;
+    margin: 0 0 16px;
+    color: var(--paper-dim);
+    font-size: 14px;
+}
+
+.list-link {
+    color: var(--signal);
+    font-size: 12px;
+}
+
+.award-mark {
+    color: var(--flag);
+}
+
+/* ---------- EXPERIENCE ---------- */
+.experience-sheet {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 56px 96px;
+}
+
+.year-block {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 44px;
+    border-top: 1px solid var(--grid-line);
+    padding: 32px 0;
+}
+
+.year-block:last-child {
+    border-bottom: 1px solid var(--grid-line);
+}
+
+.year-title {
+    color: var(--signal);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.year-items {
+    display: grid;
+    gap: 1px;
+    background: var(--grid-line);
+}
+
+.exp-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 24px;
+    padding: 24px;
+    background: var(--ink);
+}
+
+.exp-row:hover {
+    background: var(--ink-raised);
+}
+
+.exp-meta {
+    color: var(--signal-dim);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.exp-main h2 {
+    margin: 0 0 8px;
+    color: var(--paper);
+    font-size: 22px;
+    line-height: 1.35;
+}
+
+.exp-main p {
+    margin: 0 0 14px;
+    color: var(--paper-dim);
+    font-size: 14px;
+}
+
+.exp-main p:last-child {
+    margin-bottom: 0;
+}
+
+.paper-dim {
+    color: var(--paper-dim);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .scanline {
         animation: none;
@@ -503,12 +666,39 @@ nav .brand span,
         padding: 56px 24px;
     }
 
+    .viewfinder {
+        width: min(100%, 220px);
+    }
+
+    .hero-copy h1,
+    .sub-hero h1 {
+        font-size: 40px;
+    }
+
     .specsheet {
         grid-template-columns: 1fr;
         padding: 0 24px 64px;
     }
 
+    .sub-hero,
+    .list-sheet,
+    .experience-sheet {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
     .goto-grid {
         grid-template-columns: 1fr;
+    }
+
+    .list-row,
+    .year-block,
+    .exp-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .list-link {
+        justify-self: start;
     }
 }
