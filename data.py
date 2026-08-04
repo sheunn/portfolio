@@ -7,11 +7,11 @@
 profile = {
     "name": "김시은",
     "tagline": "AI Engineer",
-    "about_short": "인공지능전공 졸업예정자로서 Computer Vision, LLM/RAG, Flask 기반 웹 구현을 학습하며 실제 문제를 해결하는 프로젝트를 만들어 왔습니다.",
+    "about_short": "AI와 데이터를 활용해 현실의 문제를 해결하는 서비스를 개발합니다.",
     "education": "경기대학교 인공지능전공",
-    "email": "여기에 이메일을 입력하세요",
-    "github": "여기에 GitHub URL을 입력하세요",
-    "linkedin": "여기에 LinkedIn URL을 입력하세요",
+    "email": "sieun4507@gmail.com",
+    "github": "github.com/sheunn/sheunn.github.io",
+    "linkedin": "LinkedIn URL 입력 예정"
 }
 
 career = {
@@ -57,8 +57,11 @@ career = {
 }
 
 certificates = [
-    "정보처리기사 준비",
-    "SQLD 준비",
+    "ADsP",
+    "SQLD",
+    "CSTS",
+    "TOPCIT Lv.3",
+    "빅데이터분석기사"
 ]
 
 skills = {
