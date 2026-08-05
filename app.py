@@ -18,6 +18,16 @@ EXPERIENCE_IMAGE_FOLDERS = {
     "ces-2026": ["ces"],
 }
 
+PROJECT_ORDER = [
+    "trusteye",
+    "ddak-teo",
+    "bing-go",
+    "isbomb",
+    "trenddo",
+    "fridge",
+    "focusai",
+]
+
 
 def find_experience_image_folder(slug):
     """Experience slug와 실제 이미지 폴더명이 다를 수 있어 후보 폴더를 순서대로 찾습니다."""
@@ -131,7 +141,13 @@ def experience_detail(slug):
 def project_list():
     # projects는 slug를 key로 쓰는 딕셔너리입니다.
     # slug는 URL에 들어가는 짧고 안정적인 식별자로, 상세 페이지 링크를 만들 때 사용합니다.
-    return render_template("projects.html", projects=data.projects)
+    # 목록 노출 순서는 포트폴리오에서 보여주고 싶은 우선순위가 있으므로 명시적으로 고정합니다.
+    ordered_projects = {
+        slug: data.projects[slug]
+        for slug in PROJECT_ORDER
+        if slug in data.projects
+    }
+    return render_template("projects.html", projects=ordered_projects)
 
 
 @app.route("/projects/<slug>")

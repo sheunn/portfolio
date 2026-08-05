@@ -58,7 +58,7 @@
     {% if image_urls %}
         <section class="detail-section">
             <h2>Gallery</h2>
-            <div class="gallery-grid">
+            <div class="project-gallery">
                 {% for image_url in image_urls %}
                     <a href="{{ image_url }}" target="_blank" rel="noopener noreferrer">
                         <img src="{{ image_url }}" alt="{{ project.title }} 사진">

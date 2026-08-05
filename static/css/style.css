@@ -793,6 +793,22 @@ nav .brand span,
     filter: grayscale(8%) contrast(1.02);
 }
 
+.project-gallery {
+    display: grid;
+    gap: 28px;
+}
+
+.project-gallery a {
+    display: block;
+}
+
+.project-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(8%) contrast(1.02);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .scanline {
         animation: none;
