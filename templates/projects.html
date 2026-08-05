@@ -11,7 +11,7 @@
 
 <section class="list-sheet" aria-label="프로젝트 목록">
     {% for slug, project in projects.items() %}
-        <a class="list-row project-row" href="{{ url_for('project_detail', slug=slug) }}">
+        <a class="list-row project-row scan-hover scan-hover-wide" href="{{ url_for('project_detail', slug=slug) }}">
             <div class="list-index mono">{{ "%02d"|format(loop.index) }}</div>
             <div class="list-main">
                 <div class="list-kicker">

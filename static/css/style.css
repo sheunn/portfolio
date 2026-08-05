@@ -51,6 +51,37 @@ a {
     padding: 0;
 }
 
+/* ---------- SCAN HOVER ---------- */
+.scan-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.scan-hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        color-mix(in srgb, var(--signal) 36%, transparent),
+        transparent
+    );
+    transition: left 0.46s ease;
+}
+
+.scan-hover-wide::after {
+    width: 54%;
+}
+
+.scan-hover:hover::after {
+    left: 118%;
+}
+
 /* ---------- CUSTOM CURSOR ---------- */
 .cursor-reticle {
     position: fixed;
@@ -123,6 +154,11 @@ a {
 
     .cursor-reticle {
         display: none;
+    }
+
+    .scan-hover::after {
+        display: none;
+        transition: none;
     }
 }
 

@@ -15,7 +15,7 @@
             <div class="label year-label">{{ year }}</div>
             <div class="experience-list">
                 {% for slug, experience in experiences %}
-                    <a class="experience-link-row" href="{{ url_for('experience_detail', slug=slug) }}">
+                    <a class="experience-link-row scan-hover scan-hover-wide" href="{{ url_for('experience_detail', slug=slug) }}">
                         <span class="tag">{{ experience.category }}</span>
                         <div class="experience-row-main">
                             <h2>{{ experience.title }}</h2>
