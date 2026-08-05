@@ -397,12 +397,14 @@ nav .brand span,
 }
 
 /* ---------- SUB PAGES ---------- */
+.page-heading,
 .sub-hero {
     max-width: 1180px;
     margin: 0 auto;
     padding: 72px 56px 28px;
 }
 
+.page-heading .eyebrow,
 .sub-hero .eyebrow {
     font-family: "IBM Plex Mono", monospace;
     font-size: 12px;
@@ -411,6 +413,7 @@ nav .brand span,
     margin-bottom: 14px;
 }
 
+.page-heading h1,
 .sub-hero h1 {
     margin: 0 0 14px;
     color: var(--paper);
@@ -418,6 +421,7 @@ nav .brand span,
     line-height: 1.2;
 }
 
+.page-heading p:last-child,
 .sub-hero p {
     max-width: 620px;
     margin: 0;
@@ -1007,6 +1011,7 @@ nav .brand span,
     }
 
     .hero-copy h1,
+    .page-heading h1,
     .sub-hero h1 {
         font-size: 40px;
     }
@@ -1021,6 +1026,7 @@ nav .brand span,
         padding: 0 24px 64px;
     }
 
+    .page-heading,
     .sub-hero,
     .list-sheet,
     .experience-timeline,
