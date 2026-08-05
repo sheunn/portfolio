@@ -818,72 +818,52 @@ nav .brand span,
 }
 
 /* ---------- SKILLS ---------- */
-.card-grid {
+.skills-grid {
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 56px 96px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-    background: var(--grid-line);
+    gap: 48px 64px;
 }
 
-.skill-card {
-    background: var(--ink);
-    padding: 30px;
+.skill-group {
+    border-top: 1px solid var(--grid-line);
+    padding-top: 22px;
 }
 
-.skill-card h2 {
+.skill-group h2 {
     margin: 0 0 22px;
     color: var(--paper);
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.35;
 }
 
-.skill-badge-list {
+.skill-pill-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-.skill-badge {
-    --badge-accent: var(--signal-dim);
+.skill-pill {
     display: inline-flex;
     align-items: center;
-    min-height: 34px;
-    border: 1px solid color-mix(in srgb, var(--badge-accent) 55%, var(--grid-line));
-    background: color-mix(in srgb, var(--badge-accent) 10%, var(--ink));
+    padding: 6px 12px;
+    border: 1px solid var(--grid-line);
+    background: transparent;
     color: var(--paper);
     font-family: "IBM Plex Mono", monospace;
     font-size: 12px;
+    transition: border-color 0.15s ease;
 }
 
-.skill-icon {
-    min-width: 34px;
-    align-self: stretch;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-right: 1px solid color-mix(in srgb, var(--badge-accent) 55%, var(--grid-line));
-    color: var(--signal);
-    font-size: 11px;
-    font-weight: 700;
+.skill-pill:hover,
+.skill-pill.is-core {
+    border-color: var(--signal-dim);
 }
 
-.skill-badge span:last-child {
-    padding: 0 11px;
-}
-
-.skill-card-tone-2 .skill-badge {
-    --badge-accent: #8fa83a;
-}
-
-.skill-card-tone-3 .skill-badge {
-    --badge-accent: #6f8f68;
-}
-
-.skill-card-tone-4 .skill-badge {
-    --badge-accent: #9a8f68;
+.skill-pill:hover {
+    border-color: var(--signal);
 }
 
 /* ---------- DETAIL ---------- */
@@ -1036,7 +1016,7 @@ nav .brand span,
         padding: 0 24px 64px;
     }
 
-    .card-grid {
+    .skills-grid {
         grid-template-columns: 1fr;
         padding: 0 24px 64px;
     }

@@ -85,17 +85,6 @@ def home():
     )
 
 
-@app.route("/about")
-def about():
-    # 화면에 필요한 기본 소개/자격증 데이터를 data.py에서 가져와 템플릿에 전달합니다.
-    # app.py에 내용을 직접 적지 않으면, 라우팅 코드와 포트폴리오 데이터가 분리되어 유지보수가 쉬워집니다.
-    return render_template(
-        "about.html",
-        profile=data.profile,
-        certificates=data.certificates,
-    )
-
-
 @app.route("/skills")
 def skills():
     return render_template("skills.html", skills=data.skills)

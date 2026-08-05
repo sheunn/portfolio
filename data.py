@@ -2,7 +2,7 @@
 # Flask 라우트(app.py)는 이 데이터를 import해서 템플릿으로 전달하고,
 # 템플릿은 전달받은 데이터를 Jinja2 문법으로 반복/조건 렌더링합니다.
 
-# profile은 홈/About처럼 여러 페이지에서 반복해서 쓰는 기본 소개 정보입니다.
+# profile은 홈 화면에서 쓰는 기본 소개 정보입니다.
 # 이름, 연락처, 학력 같은 내용을 data.py에 두면 템플릿 문구를 직접 찾아 고치지 않아도 됩니다.
 profile = {
     "name": "김시은",
@@ -65,10 +65,41 @@ certificates = [
 ]
 
 skills = {
-    "AI · Computer Vision": ["Python", "PyTorch", "TensorFlow", "scikit-learn", "YOLO", "MediaPipe", "OpenCV", "ONNX"],
-    "Data · Machine Learning": ["Pandas", "NumPy", "FAISS", "LangChain", "Graph Neural Network", "RAG"],
-    "Backend · Database": ["FastAPI", "Spring Boot", "PostgreSQL", "MySQL", "SQLite", "Redis"],
-    "Tools": ["Git", "GitHub", "Docker", "VS Code", "IntelliJ IDEA", "Google Colab", "Notion"],
+    "AI · Computer Vision": [
+        {"name": "Python", "core": True},
+        {"name": "PyTorch", "core": True},
+        {"name": "TensorFlow", "core": False},
+        {"name": "scikit-learn", "core": False},
+        {"name": "YOLO", "core": True},
+        {"name": "MediaPipe", "core": False},
+        {"name": "OpenCV", "core": False},
+        {"name": "ONNX", "core": False},
+    ],
+    "Data · Machine Learning": [
+        {"name": "Pandas", "core": True},
+        {"name": "NumPy", "core": False},
+        {"name": "FAISS", "core": False},
+        {"name": "LangChain", "core": False},
+        {"name": "Graph Neural Network", "core": False},
+        {"name": "RAG", "core": True},
+    ],
+    "Backend · Database": [
+        {"name": "FastAPI", "core": True},
+        {"name": "Spring Boot", "core": False},
+        {"name": "PostgreSQL", "core": False},
+        {"name": "MySQL", "core": False},
+        {"name": "SQLite", "core": False},
+        {"name": "Redis", "core": False},
+    ],
+    "Tools": [
+        {"name": "Git", "core": False},
+        {"name": "GitHub", "core": False},
+        {"name": "Docker", "core": False},
+        {"name": "VS Code", "core": False},
+        {"name": "IntelliJ IDEA", "core": False},
+        {"name": "Google Colab", "core": False},
+        {"name": "Notion", "core": False},
+    ],
 }
 
 # experiences는 projects처럼 slug를 key로 쓰는 상세 페이지용 데이터입니다.
