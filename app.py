@@ -32,6 +32,26 @@ def find_experience_image_folder(slug):
     return slug, None
 
 
+def list_static_images(folder_parts):
+    """정적 이미지 폴더를 스캔해 Jinja 템플릿에서 쓸 URL 리스트로 변환합니다."""
+    image_dir = os.path.join(app.static_folder, *folder_parts)
+
+    if not os.path.isdir(image_dir):
+        return []
+
+    allowed_extensions = {".jpg", ".jpeg", ".png"}
+    image_files = [
+        filename
+        for filename in os.listdir(image_dir)
+        if os.path.splitext(filename.lower())[1] in allowed_extensions
+    ]
+
+    return [
+        url_for("static", filename="/".join([*folder_parts, filename]))
+        for filename in sorted(image_files)
+    ]
+
+
 @app.route("/")
 def home():
     global visit_count
@@ -98,16 +118,7 @@ def experience_detail(slug):
     image_urls = []
 
     if image_dir is not None:
-        allowed_extensions = {".jpg", ".jpeg", ".png"}
-        image_files = [
-            filename
-            for filename in os.listdir(image_dir)
-            if os.path.splitext(filename.lower())[1] in allowed_extensions
-        ]
-        image_urls = [
-            url_for("static", filename=f"images/experience/{image_folder}/{filename}")
-            for filename in sorted(image_files)
-        ]
+        image_urls = list_static_images(["images", "experience", image_folder])
 
     return render_template(
         "experience_detail.html",
@@ -134,7 +145,14 @@ def project_detail(slug):
         # 배포 환경에서도 잘못된 주소임을 명확하게 알릴 수 있습니다.
         abort(404)
 
-    return render_template("project_detail.html", slug=slug, project=project)
+    image_urls = list_static_images(["images", "projects", slug])
+
+    return render_template(
+        "project_detail.html",
+        slug=slug,
+        project=project,
+        image_urls=image_urls,
+    )
 
 
 if __name__ == "__main__":
