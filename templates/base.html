@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <div class="cursor-reticle" aria-hidden="true">
+        <span class="cursor-line horizontal"></span>
+        <span class="cursor-line vertical"></span>
+        <span class="cursor-coordinates">x: 0, y: 0</span>
+    </div>
+
     <header class="site-header">
         <nav class="nav container" aria-label="주요 메뉴">
             <a class="brand" href="{{ url_for('home') }}">KIM_SIEUN<span>.PORTFOLIO</span></a>
@@ -27,5 +33,7 @@
         {% block content %}
         {% endblock %}
     </main>
+
+    <script src="{{ url_for('static', filename='js/cursor.js') }}" defer></script>
 </body>
 </html>
