@@ -27,7 +27,7 @@
         <p class="lead">AI와 데이터를 활용해 현실의 문제를 해결하는 서비스를 개발합니다.</p>
         <div class="hero-actions">
             <a class="btn primary" href="{{ url_for('project_list') }}">Projects 보기 →</a>
-            <a class="btn ghost" href="{{ url_for('experience_list') }}">Experience 보기</a>
+            <a class="btn ghost" href="{{ url_for('experience_list') }}">Experience 보기 →</a>
         </div>
     </div>
 </section>
@@ -44,9 +44,9 @@
     <div class="spec-block">
         <div class="label">CONTACT</div>
         <div class="contact-row">
-            <a href="#"><span class="k">EMAIL</span><span>{{ profile.email }}</span><span class="arrow">→</span></a>
-            <a href="#"><span class="k">GITHUB</span><span>{{ profile.github }}</span><span class="arrow">→</span></a>
-            <a href="#"><span class="k">LINKEDIN</span><span>{{ profile.linkedin }}</span><span class="arrow">→</span></a>
+            <a href="mailto:{{ profile.email }}"><span class="k">EMAIL</span><span>{{ profile.email }}</span><span class="arrow">→</span></a>
+            <a href="https://{{ profile.github }}" target="_blank" rel="noopener noreferrer"><span class="k">GITHUB</span><span>{{ profile.github }}</span><span class="arrow">→</span></a>
+            <a href="https://{{ profile.linkedin }}" target="_blank" rel="noopener noreferrer"><span class="k">LINKEDIN</span><span>{{ profile.linkedin }}</span><span class="arrow">→</span></a>
         </div>
     </div>
 
@@ -72,14 +72,14 @@
     <div class="span-2 goto-grid">
         <a class="goto-card" href="{{ url_for('experience_list') }}">
             <div class="idx">01 / EXPERIENCE</div>
-            <h3>연도별 활동 · 수상 · 프로젝트</h3>
-            <p>2023년부터의 프로젝트, 수상, 학습 경험을 타임라인으로 정리했습니다.</p>
+            <h3>연도별 교내외 활동 이력</h3>
+            <p>동아리, 강사활동, 해외연수 등 교내외 활동을 시간순으로 정리했습니다.</p>
             <span class="link">전체 이력 보기 →</span>
         </a>
         <a class="goto-card" href="{{ url_for('project_list') }}">
             <div class="idx">02 / PROJECTS</div>
-            <h3>AI 기능 구현 상세</h3>
-            <p>담당 역할과 기술적 의사결정을 프로젝트별 상세 페이지에서 확인할 수 있습니다.</p>
+            <h3>프로젝트별 기술 구현 상세</h3>
+            <p>문제 정의부터 기술 선택, 담당 역할까지 프로젝트별로 확인할 수 있습니다.</p>
             <span class="link">프로젝트 전체 보기 →</span>
         </a>
     </div>

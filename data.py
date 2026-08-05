@@ -65,10 +65,10 @@ certificates = [
 ]
 
 skills = {
-    "AI / ML": ["Python", "PyTorch", "scikit-learn", "CNN", "TF-IDF", "Logistic Regression"],
-    "Computer Vision": ["YOLO", "YOLOv8", "OpenCV", "MediaPipe", "OCR"],
-    "LLM / RAG": ["LangChain", "FAISS", "RAG", "GPT-4o", "GPT-4o mini", "Gemini API", "Claude API"],
-    "Backend / Data": ["Flask", "Jinja2", "AWS RDS", "Gunicorn", "Nginx", "systemd"],
+    "AI · Computer Vision": ["Python", "PyTorch", "TensorFlow", "scikit-learn", "YOLO", "MediaPipe", "OpenCV", "ONNX"],
+    "Data · Machine Learning": ["Pandas", "NumPy", "FAISS", "LangChain", "Graph Neural Network", "RAG"],
+    "Backend · Database": ["FastAPI", "Spring Boot", "PostgreSQL", "MySQL", "SQLite", "Redis"],
+    "Tools": ["Git", "GitHub", "Docker", "VS Code", "IntelliJ IDEA", "Google Colab", "Notion"],
 }
 
 # experiences는 projects처럼 slug를 key로 쓰는 상세 페이지용 데이터입니다.

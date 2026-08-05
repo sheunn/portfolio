@@ -3,6 +3,36 @@
 {% block title %}Skills | 김시은 Portfolio{% endblock %}
 
 {% block content %}
+{% set skill_icons = {
+    "Python": "Py",
+    "PyTorch": "Pt",
+    "TensorFlow": "Tf",
+    "scikit-learn": "Sk",
+    "YOLO": "Y",
+    "MediaPipe": "Mp",
+    "OpenCV": "Cv",
+    "ONNX": "Ox",
+    "Pandas": "Pd",
+    "NumPy": "Np",
+    "FAISS": "Fs",
+    "LangChain": "Lc",
+    "Graph Neural Network": "GNN",
+    "RAG": "RAG",
+    "FastAPI": "Fa",
+    "Spring Boot": "Sp",
+    "PostgreSQL": "Pg",
+    "MySQL": "My",
+    "SQLite": "Sq",
+    "Redis": "Rd",
+    "Git": "Gt",
+    "GitHub": "Gh",
+    "Docker": "Dk",
+    "VS Code": "VS",
+    "IntelliJ IDEA": "IJ",
+    "Google Colab": "Co",
+    "Notion": "No"
+} %}
+
 <section class="page-heading">
     <p class="eyebrow">Skills</p>
     <h1>AI 프로젝트를 구현하며 사용한 기술</h1>
@@ -11,11 +41,14 @@
 
 <section class="card-grid">
     {% for category, skill_list in skills.items() %}
-        <article class="skill-card">
+        <article class="skill-card skill-card-tone-{{ loop.index }}">
             <h2>{{ category }}</h2>
-            <div class="tag-list">
+            <div class="skill-badge-list">
                 {% for skill in skill_list %}
-                    <span class="tag">{{ skill }}</span>
+                    <span class="skill-badge">
+                        <span class="skill-icon">{{ skill_icons.get(skill, skill[:2]|upper) }}</span>
+                        <span>{{ skill }}</span>
+                    </span>
                 {% endfor %}
             </div>
         </article>

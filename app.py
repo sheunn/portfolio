@@ -68,11 +68,13 @@ def home():
     visit_count += 1
     featured_skills = [
         "Python",
-        "Flask",
-        "RAG",
-        "LangChain",
+        "scikit-learn",
+        "Pandas",
+        "NumPy",
+        "TensorFlow",
+        "PyTorch",
         "YOLO",
-        "OpenCV",
+        "RAG",
     ]
     return render_template(
         "index.html",
