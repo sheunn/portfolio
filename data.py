@@ -9,9 +9,9 @@ profile = {
     "tagline": "AI Engineer",
     "about_short": "AI와 데이터를 활용해 현실의 문제를 해결하는 서비스를 개발합니다.",
     "education": "경기대학교 인공지능전공",
+    "phone": "010-5654-4507",
     "email": "sieun4507@gmail.com",
     "github": "github.com/sheunn/sheunn.github.io",
-    "linkedin": "LinkedIn URL 입력 예정"
 }
 
 career = {
