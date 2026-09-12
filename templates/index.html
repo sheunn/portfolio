@@ -45,9 +45,8 @@
         <div class="label">CONTACT</div>
         <div class="contact-row">
             <a href="mailto:{{ profile.email }}"><span class="k">EMAIL</span><span>{{ profile.email }}</span><span class="arrow">→</span></a>
-            <span class="contact-static"><span class="k">PHONE</span><span>{{ profile.phone }}</span></span>
+            <a href="tel:{{ profile.phone }}"><span class="k">PHONE</span><span>{{ profile.phone }}</span><span class="arrow">→</span></a>
             <a href="https://{{ profile.github }}" target="_blank" rel="noopener noreferrer"><span class="k">GITHUB</span><span>{{ profile.github }}</span><span class="arrow">→</span></a>
-            <a href="https://{{ profile.linkedin }}" target="_blank" rel="noopener noreferrer"><span class="k">LINKEDIN</span><span>{{ profile.linkedin }}</span><span class="arrow">→</span></a>
         </div>
     </div>
 
